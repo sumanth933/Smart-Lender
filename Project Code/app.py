@@ -17,7 +17,11 @@ import pickle
 app = Flask(__name__)
 
 # ── Load the pre-trained XGBoost model ───────────────────────────────────────
-with open('model.pkl', 'rb') as f:
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+with open(os.path.join(BASE_DIR, 'model.pkl'), 'rb') as f:
     model = pickle.load(f)
 
 # ── Label encoding maps (must match train_model.py encoding order) ────────────
